@@ -1,0 +1,461 @@
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+
+  body main .hero-section .hero-banner {
+    margin-bottom: 20%;
+
+    .hero-banner-img {
+      min-height: 400px;
+    }
+  }
+
+  .lead {
+    margin-bottom: 40px !important;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+
+  body main .hero-section .hero-banner .hero-banner-img {
+    min-height: 450px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  body main .hero-section .hero-banner .hero-banner-img {
+    min-height: 500px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  /* Styles for large screens */
+}
+
+@media screen and (min-width: 1200px) {
+  /* Styles for extra large screens */
+}
+
+.room-detail-section {
+  // Variables for common breakpoints
+  $breakpoint-mobile-max: 46.1875em; // 739px
+  $breakpoint-tablet-min: 750px;
+  $breakpoint-tablet-max: 1024px;
+  $breakpoint-small-tablet-max: 850px;
+
+  // Mixin for the table responsive styles
+  @mixin responsive-table {
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    // Hide table headers (but not display: none;, for accessibility)
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      border: 1px solid var(--border-color);
+    }
+
+    td {
+      // Behave like a "row"
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      padding-left: 50%;
+      text-align: center;
+    }
+
+    td:before {
+      // Now like a table header
+      position: absolute;
+      // Top/left values mimic padding
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    // Label the data
+    td:nth-of-type(1):before {
+      content: "Lựa chọn phòng";
+      font-weight: bold;
+      align-items: center;
+      height: 100%;
+      border-right: 1px solid var(--border-color);
+    }
+
+    td:nth-of-type(2):before {
+      content: "Khách";
+      font-weight: bold;
+      text-align: left;
+      align-items: center;
+      height: 100%;
+      border-right: 1px solid var(--border-color);
+    }
+
+    td:nth-of-type(3):before {
+      content: "Giá/phòng/đêm";
+      font-weight: bold;
+      text-align: left;
+      align-items: center;
+      height: 100%;
+      border-right: 1px solid var(--border-color);
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile-max) {
+    .rd-content {
+      padding: 8px;
+    }
+
+    .rd-header {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rd-logo {
+      text-align: center;
+      width: 100%;
+
+      img {
+        width: 70px;
+        margin: 0 auto;
+      }
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0px;
+      align-items: center; // Added for the second .nav-list block
+
+      li {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    }
+
+    #rd-overview {
+      padding: 10px;
+    }
+
+    .ovv-left {
+      gap: 10px;
+    }
+
+    .ovv-title {
+      font-size: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .star {
+      font-size: 12px;
+    }
+
+    .rd-addr {
+      font-size: 14px;
+      margin-top: 8px;
+      line-height: 10px;
+      margin-bottom: 30px;
+
+      i {
+        font-size: 16px;
+        margin-right: 5px;
+      }
+    }
+
+    .ovv-info {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 30px;
+    }
+
+    .ovv-left {
+      gap: 24px;
+    }
+
+    .ovv-left-top {
+      gap: 5px;
+    }
+
+    .ovv-left-bot {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .ovv-left-fr2 {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .detail-info-title {
+      width: 100%;
+      font-size: 22px;
+    }
+
+    .intro-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .intro-para {
+      width: 100%;
+    }
+
+    .produce-detail {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 90px;
+    }
+
+    .room-card {
+      width: 100%;
+      margin-top: 30%;
+    }
+
+    .room-img {
+      margin-bottom: 10px;
+    }
+
+    .detail-board {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .room-option {
+      width: 100%;
+      padding: 0px;
+    }
+
+    .main-img {
+      width: 100%;
+    }
+
+    .room-info {
+      gap: 10px;
+    }
+
+    .room-price {
+      margin-top: 0px;
+    }
+
+    .room-detail {
+      padding: 8px;
+    }
+
+    .room-table {
+      width: 100%;
+    }
+
+    @include responsive-table;
+
+    .room-pick {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .cp-res {
+      text-align: center;
+    }
+
+    .rating-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .rating-point {
+      width: 100%;
+    }
+
+    .room-detail-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .footer-map {
+      width: 100%;
+      height: 250px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+    .rd-header {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rd-logo {
+      width: 10%;
+    }
+
+    .nav-list {
+      width: 100%;
+      gap: 5%;
+      padding-left: 0;
+    }
+
+    .nav-tabs {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .rd-login-locate {
+      width: auto;
+      text-align: center;
+    }
+
+    .login-button {
+      margin: auto;
+    }
+
+    .ovv-info {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 40px;
+    }
+
+    .ovv-left {
+      gap: 8px;
+    }
+
+    .ovv-left-top {
+      gap: 15px;
+    }
+
+    .ovv-left-bot {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .ovv-left-fr2 {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .ovv-contact {
+      gap: 0px;
+      width: 40%;
+    }
+
+    .detail-info-title {
+      width: 100%;
+      font-size: 22px;
+    }
+
+    .intro-content {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+    }
+
+    .intro-para {
+      width: 100%;
+    }
+
+    .produce-detail {
+      display: flex;
+      flex-direction: column; // Changed from row as per existing media query for smaller tablet
+      width: 100%;
+      margin-top: 30%;
+      align-items: center;
+      gap: 190px;
+    }
+
+    .room-card {
+      width: 60%;
+    }
+
+    .detail-board {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .rating-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .rating-point {
+      width: 100%;
+    }
+
+    .room-detail-footer {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 40%;
+      margin: auto;
+    }
+
+    .footer-map {
+      width: 90%;
+      margin: auto;
+    }
+
+    .social-icon {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $breakpoint-small-tablet-max) {
+    .col-sm-4 {
+      width: 100%;
+    }
+
+    .col-6 {
+      width: 50%;
+    }
+
+    .intro-content {
+      padding: 8px;
+    }
+
+    .produce-detail {
+      padding: 8px;
+      width: 80%;
+    }
+  }
+}

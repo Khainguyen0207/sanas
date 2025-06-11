@@ -1,0 +1,441 @@
+.rooms-section {
+    $primary-color: #1da1f2;
+    $text-color-dark: #333;
+    $text-color-medium: #555;
+    $text-color-light: #000;
+    $background-color: #ffffff;
+    $border-color-light: #ddd;
+    $border-color-medium: #ccc;
+    $border-radius-small: 6px;
+    $border-radius-medium: 8px;
+    $border-radius-large: 10px;
+    $border-radius-extra-large: 15px;
+    $box-shadow-light: 0 0 0 1px $border-color-light;
+    $box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+    $box-shadow-dark: 0 8px 20px rgba(0, 0, 0, 0.2);
+    $blue-accent: #5b9af4; // New variable for score-box background
+    $dark-blue-text: #003580; // New variable for review text
+
+    // Header styles
+    #header {
+        width: 100%;
+        display: flex;
+        padding: 14px 18px;
+        background-color: white;
+        justify-content: space-between;
+
+        .logo {
+            width: 5%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .nav-tabs {
+            gap: 50px;
+        }
+
+        .nav-item {
+            a {
+                font-weight: 700;
+                font-size: 20px;
+                color: rgb(5, 144, 230);
+            }
+        }
+
+        .login-locate {
+            width: 200px;
+        }
+
+        .login-button {
+            width: 50px;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+            border-radius: 400px;
+            padding: 8px 10px;
+            background-color: rgb(5, 144, 230);
+            overflow: hidden;
+            cursor: pointer;
+            float: right;
+            transition: 0.5s;
+
+            i {
+                margin-top: 2px;
+                font-size: 28px;
+                color: rgb(255, 255, 255);
+            }
+
+            .login-w {
+                font-size: 20px;
+                display: none;
+                margin-left: 0px;
+                transition: 1s;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 700;
+                }
+            }
+
+            &:hover {
+                width: 70%;
+                background-color: rgb(9, 77, 180);
+
+                .login-w {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // Product place styles
+    .pro-place {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .rooms-wrapper {
+        .card {
+            background-color: var(--bs-white);
+            border: none;
+        }
+    }
+
+    .place-img {
+        position: relative;
+
+        img {
+            border-radius: 10px;
+        }
+
+        .img-layer {
+            position: absolute;
+            top: 0;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-para {
+            position: absolute;
+            top: 40%;
+            color: white;
+            padding: 4px 16px;
+            width: 60%;
+        }
+    }
+
+    .detail-img {
+        height: 160px;
+        object-fit: cover;
+    }
+
+    #rooms {
+        .card {
+            background: white;
+            border: 1px solid $border-color-light;
+            border-radius: $border-radius-extra-large;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+            &:hover {
+                box-shadow: $box-shadow-medium;
+                transform: scale(1.03);
+                box-shadow: $box-shadow-dark;
+                cursor: pointer;
+            }
+    
+            @media (max-width: 576px) {
+                border-radius: $border-radius-large;
+            }
+        }
+    }
+
+    // Footer styles
+    #footer {
+        display: flex;
+        padding: 18px 24px;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: rgb(234, 234, 234);
+
+        .footer-title {
+            display: flex;
+        }
+
+        .ft {
+            margin-top: 7%;
+        }
+
+        .footer-logo {
+            width: 16%;
+            margin-left: 8%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .footer-map {
+            width: 40%;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+
+            i {
+                margin-right: 10px;
+            }
+        }
+
+        .fl-link {
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            display: flex;
+            gap: 3%;
+
+            i {
+                font-size: 30px;
+                color: black;
+            }
+        }
+    }
+
+    .list-option-benefit {
+        li {
+            color: #00d300;
+        }
+    }
+
+    // Responsive styles
+    @media screen and (max-width: 992px) {
+        .nav-tabs {
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item a {
+            font-size: 16px;
+        }
+
+        .login-button {
+            width: 60px;
+
+            &:hover {
+                width: 80%;
+            }
+        }
+
+        .login-logo,
+        .register-logo {
+            width: 25%;
+        }
+
+        .login-form {
+            width: 80%;
+        }
+
+        .see-more {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #header {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 20%;
+            text-align: center;
+        }
+
+        .nav-tabs {
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-button {
+            justify-content: center;
+        }
+
+        .login-w {
+            font-size: 16px;
+        }
+
+        .login-form {
+            width: 90%;
+            padding: 15px;
+        }
+
+        .form-input {
+            height: 45px;
+
+            input {
+                font-size: 14px;
+            }
+        }
+
+        .content-name {
+            font-size: 12px;
+        }
+
+        .footer-link {
+            a {
+                padding: 4px;
+            }
+
+            img,
+            i {
+                width: 6%;
+            }
+        }
+
+        .see-more {
+            width: 100%;
+        }
+
+        .filter {
+            margin-bottom: 30px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .nav-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-item {
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .login-form {
+            width: 95%;
+        }
+
+        .login-logo,
+        .register-logo {
+            width: 50%;
+        }
+
+        .footer-link {
+
+            img,
+            i {
+                width: 8%;
+            }
+        }
+
+        .rs-pass {
+            font-size: 12px;
+        }
+
+        .form-footer {
+
+            p,
+            a {
+                font-size: 13px;
+            }
+        }
+
+        .filter {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            width: 60%;
+        }
+
+        .footer-content {
+            font-size: 14px;
+        }
+
+        .fl-link h4 {
+            font-size: 16px;
+        }
+
+        .social-icon i {
+            font-size: 26px;
+        }
+
+        iframe {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        #footer {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .footer-info {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            width: 40%;
+            margin: 10px 0;
+        }
+
+        .footer-map {
+            width: 100%;
+        }
+
+        .footer-content {
+            justify-content: center;
+            flex-direction: row;
+            text-align: left;
+            padding: 6px 0;
+
+            div {
+                max-width: 90%;
+            }
+        }
+
+        .social-icon {
+            justify-content: center;
+            margin-top: 10px;
+            gap: 20px;
+
+            i {
+                font-size: 28px;
+            }
+        }
+
+        .filter {
+            margin-bottom: 30px;
+        }
+    }
+
+
+}

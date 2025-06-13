@@ -12,7 +12,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return admin_template_basic_view('room.index', [
+        return admin_template_basic_view('rooms.index', [
             'title' => 'Room'
         ]);
     }

@@ -1,4 +1,6 @@
+@php use \Illuminate\Support\Facades\Storage; @endphp
 @extends(admin_template_basic_theme('layouts.master'))
+
 @section('content')
     <div class="content-wrapper">
         <div class="row">
@@ -7,7 +9,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Customer</h4>
                         <div class="action float-right">
-                            <button type="reset" class="btn btn-inverse-primary btn-icon-text"
+                            <button type="reset" class="btn btn-inverse-primary btn-icon-text me-3"
                                     data-bb-toggle="btn-with-href"
                                     data-url="{{ route('admin.customers.create') }}">
                                 <i class="mdi mdi-plus"></i> Thêm
@@ -45,7 +47,7 @@
                                         </td>
                                         <td> {{ $customer->id }}</td>
                                         <td>
-                                            @if($customer->avatar && \Illuminate\Support\Facades\Storage::exists($customer->avatar))
+                                            @if($customer->avatar && Storage::exists($customer->avatar))
                                                 <img src="{{ $customer->avatar }}" alt="image"/>
                                             @endif
 
@@ -55,16 +57,23 @@
 
                                         <td> {{ number_format($customer->cash, 0) }} </td>
                                         <td>
-                                            <div class="badge badge-success">{{ $customer->status }}</div>
+                                            @php
+                                                if ($customer->status === 'active') {
+                                                    $config['status'] = 'badge-success';
+                                                }
+                                            @endphp
+
+                                            {!! $customer->status->toHtml() !!}
                                         </td>
                                         <td> 04 Dec 2019</td>
                                         <td>
-                                            <button type="button" class="btn-sm btn-inverse-primary btn-icon">
+                                            <a href="{{route('admin.customers.edit', $customer)}}" type="button"
+                                               class="btn-sm btn-inverse-primary btn-icon">
                                                 <i class="mdi mdi-pencil-box-outline"></i>
-                                            </button>
-                                            <button type="button" class="btn-sm btn-inverse-danger btn-icon">
+                                            </a>
+                                            <a href="#" type="button" class="btn-sm btn-inverse-danger btn-icon">
                                                 <i class="mdi mdi-delete"></i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

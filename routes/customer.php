@@ -15,5 +15,5 @@ Route::group([
         Route::resource('register', 'RegisterController');
     });
 
-    Route::get('rooms', 'RoomController@index')->name('rooms');
+    Route::resource('room', 'RoomController');
 });

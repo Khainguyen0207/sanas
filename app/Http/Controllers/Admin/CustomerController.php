@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\CustomerStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Customer;
@@ -14,8 +15,6 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        Customer::all();
-
         return admin_template_basic_view('customer.index', [
             'title' => 'Customer',
             'customers' => Customer::all()
@@ -27,9 +26,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return admin_template_basic_view('customer.edit', [
-            'title' => 'Customer',
-            'customers' => Customer::all()
+        $title = 'Create Customer';
+
+        return admin_template_basic_view('customer.create', [
+            'title' => $title,
         ]);
     }
 
@@ -46,7 +46,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('admin.customers.show', compact('customer'));
+//        return view('admin.customers.show', compact('customer'));
     }
 
     /**
@@ -54,7 +54,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('admin.customers.edit', compact('customer'));
+        return admin_template_basic_view('customer.edit', compact('customer'));
     }
 
     /**

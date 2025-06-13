@@ -6,7 +6,6 @@
             <div class="card">
                 <h3 class="card-title">Customer Information</h3>
             </div>
-
             <div class="form-has-data" id="customer-generate">
                 @include(admin_template_basic_theme('pages.customer.base-form'))
             </div>
@@ -36,19 +35,4 @@
         });
     </script>
 
-    @if($customer)
-        <script src="{{ asset('assets/admin/js/form.js') }}"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const $myVar = @json($customer); // Nhúng biến PHP vào JS
-
-                const $id = $('.form-has-data').attr('id') + '-form'; // Thêm class selector
-
-                $('form.form-sample').attr('id', $id);
-
-                generateForm($myVar, $id)
-            })
-        </script>
-    @endif
 @endpush

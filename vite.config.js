@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/views/theme/assets/scss/style.scss',
                 'resources/views/admin-template/template-basic/assets/scss/style.scss',
                 'resources/views/admin-template/template-basic/assets/js/app.js',
-                'resources/js/app.js',
+                'resources/views/theme/assets/js/app.js',
             ],
             refresh: true,
         }),

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CustomerStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,13 +19,21 @@ class Customer extends Model
         'email',
         'cash',
         'status',
-        'birthday'
+        'birthday',
+        'phone',
+        'email_verified_at',
+        'remember_token',
+        'is_verified',
+        'last_login_at',
+        'gender',
+        'address',
+        'is_partner',
     ];
 
     protected $casts = [
-        'birthday' => 'date',
+        'birthday' => 'date:Y-m-d',
         'cash' => 'integer',
-        'status' => 'string',
+        'status' => CustomerStatusEnum::class,
         'password' => 'hashed'
     ];
 

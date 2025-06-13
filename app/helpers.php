@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 
 if (! function_exists('admin_template_basic_view')) {
     /**
-     * Get the evaluated view contents for the given view.
+     * Start admin-template.template-basic.pages.
      *
      * @param string|null $view
      * @param array|Arrayable $data
@@ -20,6 +20,14 @@ if (! function_exists('admin_template_basic_view')) {
 
         if (func_num_args() === 0) {
             return $factory;
+        }
+
+        if (! $mergeData) {
+            $data['type'] = 'form';
+        }
+
+        if (! array_key_exists('title', $data)) {
+            $data['title'] = 'Sanas Full Stack';
         }
 
         $view = 'admin-template.template-basic.pages.' . $view;

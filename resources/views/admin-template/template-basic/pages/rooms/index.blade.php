@@ -6,9 +6,9 @@
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Customer</h4>
+                        <h4 class="card-title">{{ $title }}</h4>
                         <div class="action float-right">
-                            <button type="reset" class="btn btn-inverse-primary btn-icon-text"
+                            <button type="reset" class="btn btn-inverse-primary btn-icon-text me-3"
                                     data-bb-toggle="btn-with-href"
                                     data-url="{{ route('admin.customers.create') }}">
                                 <i class="mdi mdi-plus"></i> Thêm

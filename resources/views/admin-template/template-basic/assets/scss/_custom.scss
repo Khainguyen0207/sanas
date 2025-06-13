@@ -107,12 +107,17 @@ html.dark, html.light {
                 color: var(--text-color);
             }
 
-            .card, .card-body {
-                border-radius: 5px;
-                box-shadow: 0 0 5px 0 #6b6b6b26;
-                color: var(--bs-body-color);
-                background: var(--bs-card-bg);
+            .card {
+                background-color: transparent;
                 border: none;
+
+                .card-body {
+                    border-radius: 5px;
+                    box-shadow: 0 0 5px 0 #6b6b6b26;
+                    color: var(--bs-body-color);
+                    background: var(--bs-card-bg);
+                    border: none;
+                }
             }
 
             .form-control {
@@ -123,6 +128,11 @@ html.dark, html.light {
             table, tr, th, td {
                 color: var(--text-table-color);
             }
+
+        }
+
+        .form-control, .asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead, .tt-query, .tt-hint {
+            color: var(--text-color);
         }
     }
 

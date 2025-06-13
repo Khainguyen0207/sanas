@@ -89,6 +89,14 @@
             </a>
         </li>
         <li class="nav-item menu-items mb-2">
+            <a class="nav-link" href="{{ route('admin.resorts.index') }}">
+                <span class="menu-icon">
+                  <i class="mdi mdi-sofa"></i>
+                </span>
+                <span class="menu-title">Resorts</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items mb-2">
             <a class="nav-link" href="{{ route('admin.settings.index') }}">
                 <span class="menu-icon">
                   <i class="mdi mdi-settings"></i>

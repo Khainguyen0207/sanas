@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\CustomerStatusEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CustomerRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
 {
@@ -36,9 +39,37 @@ class CustomerController extends Controller
     /**
      * Store a newly created customer in storage.
      */
-    public function store(LoginRequest $request)
+    public function store(CustomerRequest $request)
     {
-        dd($request);
+        $data = $request->validated();
+
+        $imagePaths = [];
+
+        if ($request->hasFile('avatar')) {
+            foreach ($request->file('avatar') as $image) {
+                if ($image->isValid()) {
+                    $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+                    $path = $image->storeAs('rooms_images', $fileName, 'public');
+
+                    $publicPath = Storage::url($path);
+
+                    $imagePaths[] = $publicPath;
+                }
+            }
+        }
+
+        if (!empty($imagePaths)) {
+            $data['avatar'] = json_encode($imagePaths);
+        } else {
+            $data['avatar'] = null; // hoặc json_encode([]) nếu muốn mảng rỗng
+        }
+
+        Customer::query()->create($data);
+
+        return redirect()->route('admin.customers.index')->with([
+            'success' => 'Customer created successfully.'
+        ]);
     }
 
     /**
@@ -46,7 +77,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-//        return view('admin.customers.show', compact('customer'));
+        return admin_template_basic_view('customer.edit', compact('customer'));
     }
 
     /**
@@ -60,30 +91,43 @@ class CustomerController extends Controller
     /**
      * Update the specified customer in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CustomerRequest $request, Customer $customer)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:customers,email,' . $customer->id,
-            'cash' => 'required|numeric|min:0',
-            'status' => 'required|in:active,locked',
-            'birthday' => 'required|date',
+        $data = $request->validated();
+
+        if ($request->hasFile('avatar')) {
+           $image = $request->file('avatar');
+            if ($image->isValid()) {
+                $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+                $path = $image->storeAs('rooms_images', $fileName, 'public');
+
+                $publicPath = Storage::url($path);
+
+                $customer->avatar = $publicPath;
+            }
+        }
+        if (isset($data['password'])) {
+            $customer->password = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        $customer->fill($data);
+
+        if ($customer->isDirty()) {
+            $customer->save();
+        }
+
+        return redirect()->route('admin.customers.index')->with([
+            'success' => 'Customer updated successfully.'
         ]);
-
-        $customer->update($validated);
-
-        return redirect()->route('admin.customers.index')
-            ->with('success', 'Customer updated successfully.');
     }
 
-    /**
-     * Remove the specified customer from storage.
-     */
     public function destroy(Customer $customer)
     {
         $customer->delete();
 
-        return redirect()->route('admin.customers.index')
-            ->with('success', 'Customer deleted successfully.');
+        return redirect()->route('admin.customers.index')->with('success', 'Customer deleted successfully.');
     }
 }

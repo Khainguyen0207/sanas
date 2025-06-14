@@ -14,7 +14,7 @@ class LoginRequest extends FormRequest
             'email' => 'required|email|unique:customers,email',
             'cash' => 'required|numeric|min:0',
             'status' => 'required|in:active,locked',
-            'birthday' => 'required|date',
+            'birthday' => 'nullable|date',
         ];
     }
 }

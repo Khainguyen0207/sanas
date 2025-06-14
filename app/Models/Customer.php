@@ -14,6 +14,7 @@ class Customer extends Model
     protected $table = 'customers';
 
     protected $fillable = [
+        'id',
         'name',
         'password',
         'email',
@@ -34,11 +35,8 @@ class Customer extends Model
         'birthday' => 'date:Y-m-d',
         'cash' => 'integer',
         'status' => CustomerStatusEnum::class,
-        'password' => 'hashed'
+        'password' => 'hashed',
     ];
 
-    protected $hidden = [
-        'password',
-    ];
-
+    protected $hidden = ['password'];
 }

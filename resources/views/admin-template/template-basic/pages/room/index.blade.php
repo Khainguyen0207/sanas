@@ -7,16 +7,16 @@
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Customer</h4>
+                        <h4 class="card-title">Room</h4>
                         <div class="action float-right">
                             <button type="reset" class="btn btn-inverse-primary btn-icon-text me-3"
                                     data-bb-toggle="btn-with-href"
-                                    data-url="{{ route('admin.customers.create') }}">
+                                    data-url="{{ route('admin.rooms.create') }}">
                                 <i class="mdi mdi-plus"></i> Thêm
                             </button>
                         </div>
                         <div class="table-responsive">
-                            <table class="table" id="customer-table">
+                            <table class="table" id="room-table">
                                 <thead>
                                 <tr>
                                     <th>
@@ -26,17 +26,18 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th> ID</th>
-                                    <th> Name</th>
-                                    <th> Email</th>
-                                    <th> Cash ( VNĐ )</th>
-                                    <th> Status</th>
-                                    <th> Create Date</th>
-                                    <th> Operations</th>
+                                    <th>ID</th>
+                                    <th>Resort</th>
+                                    <th>Name</th>
+                                    <th>Price (VNĐ)</th>
+                                    <th>Quantity</th>
+                                    <th>Capacity</th>
+                                    <th>Status</th>
+                                    <th>Operations</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($customers as $customer)
+                                @foreach($rooms as $room)
                                     <tr>
                                         <td>
                                             <div class="form-check form-check-muted m-0">
@@ -45,34 +46,37 @@
                                                 </label>
                                             </div>
                                         </td>
-                                        <td> {{ $customer->id }}</td>
+                                        <td>{{ $room->id }}</td>
+                                        <td>{{ $room->resort->name ?? '' }}</td>
                                         <td>
-                                            @if($customer->avatar && Storage::exists($customer->avatar))
-                                                <img src="{{ $customer->avatar }}" alt="image"/>
+                                            @if($room->images && is_array($room->images) && count($room->images) > 0)
+                                                <img src="{{ Storage::url($room->images[0]) }}" alt="image"
+                                                     class="rounded-circle" width="32"/>
                                             @endif
-
-                                            <span class="pl-2">{{ $customer->name }}</span>
+                                            <span class="pl-2">{{ $room->name }}</span>
                                         </td>
-                                        <td> {{$customer->email}}</td>
-
-                                        <td> {{ number_format($customer->cash, 0) }} </td>
+                                        <td>{{ number_format($room->price, 0) }}</td>
+                                        <td>{{ $room->quantity }}</td>
+                                        <td>{{ $room->number_of_adults }} Adults, {{ $room->number_of_children }}
+                                            Children
+                                        </td>
                                         <td>
                                             @php
-                                                if ($customer->status === 'active') {
-                                                    $config['status'] = 'badge-success';
-                                                }
+                                                $statusClass = $room->quantity > 0 ? 'badge-success' : 'badge-danger';
+                                                $statusText = $room->quantity > 0 ? 'Available' : 'Unavailable';
                                             @endphp
-
-                                            {!! $customer->status->toHtml() !!}
+                                            <span class="badge {{ $statusClass }}">{{ $statusText }}</span>
                                         </td>
-                                        <td> 04 Dec 2019</td>
                                         <td>
-                                            <a href="{{route('admin.customers.show', $customer)}}" type="button"
+                                            <a href="{{route('admin.rooms.edit', $room)}}" type="button"
                                                class="btn-sm btn-inverse-primary btn-icon">
                                                 <i class="mdi mdi-pencil-box-outline"></i>
                                             </a>
-                                            <a href="{{ route('admin.customers.destroy', $customer) }}" type="button" class="btn-sm btn-inverse-danger btn-icon" data-bs-action="modal-confirm-action" data-bs-toggle="modal" data-bs-target="#modal-confirm-delete">
-                                                <i class="mdi mdi-delete"></i>
+                                            <a href="{{ route('admin.rooms.destroy', $room) }}" type="button"
+                                               class="btn-sm btn-inverse-danger btn-icon"
+                                               data-bs-action="modal-confirm-action" data-bs-toggle="modal"
+                                               data-bs-target="#modal-confirm-delete">
+                                                    <i class="mdi mdi-delete"></i>
                                             </a>
                                         </td>
                                     </tr>

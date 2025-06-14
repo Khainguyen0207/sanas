@@ -21,7 +21,7 @@
                     </div>
                     <div id="rd-overview">
                         <div class="ovv-title">
-                            Resort Hồ Tràm - Vũng Tàu
+                            {{$resort->name}}
                             <span class="text-warning star">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -32,43 +32,47 @@
                         </div>
 
                         <div class="rd-addr">
-                            <i class="fas fa-map-marker-alt"></i> Đường Bình Châu, Xã Bình Châu, Huyện Xuyên Mộc,
-                            Tỉnh Bà Rịa - Vũng Tàu - <a href="" class="text-primary">Xem trên bản đồ</a>
+                            <i class="fas fa-map-marker-alt"></i> {{ $resort->address }} - <a href="" class="text-primary">Xem trên bản đồ</a>
                         </div>
 
                         <div class="ovv-info row">
+                            @php
+                                $images = json_decode($resort->images, true)
+                            @endphp
+                            <img src=""
+                                 class="w-100 rounded-3 detail-img" alt="{{ $resort->name }}">
                             <div class="ovv-left">
                                 <div class="ovv-left-top">
-                                    <div class="ovv-left-fr1 ">
+                                    <div class="ovv-left-fr1">
                                         <a href="#">
-                                            <img src="{{ asset("assets/images/room/image.png") }}" alt="">
+                                            <img src="{{ $images[0] }}" alt="">
                                         </a>
                                     </div>
                                     <div class="ovv-left-fr2">
-                                        <a href="#"><img src="{{ asset("assets/images/room/image%20(1).png"
+                                        <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(1).png"
                                                         ) }}" alt=""></a>
-                                        <a href="#"><img src="{{ asset("assets/images/room/image%20(2).png"
+                                        <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(2).png"
                                                         ) }}" alt=""></a>
-                                        <a href="#"><img src="{{ asset("assets/images/room/image%20(3).png"
+                                        <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(3).png"
                                                         ) }}" alt=""></a>
-                                        <a href="#"><img src="{{ asset("assets/images/room/image%20(4).png"
+                                        <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(4).png"
                                                         ) }}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="ovv-left-bot ">
-                                    <a href="#"><img src="{{ asset("assets/images/room/image%20(5).png"
+                                    <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(5).png"
                                                     ) }}" alt=""></a>
-                                    <a href="#"><img src="{{ asset("assets/images/room/image%20(6).png"
+                                    <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(6).png"
                                                     ) }}" alt=""></a>
-                                    <a href="#"><img src="{{ asset("assets/images/room/image%20(7).png"
+                                    <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(7).png"
                                                     ) }}" alt=""></a>
-                                    <a href="#"><img src="{{ asset("assets/images/room/image%20(8).png"
+                                    <a href="#"><img src="{{ asset("assets/images/theme/images/room/image%20(8).png"
                                                     ) }}" alt=""></a>
                                 </div>
                             </div>
                             <div class="ovv-right">
                                 <div class="ovv-map">
-                                    <img src="{{ asset("assets/images/room/image%20(22).png") }}" alt="">
+                                    <img src="{{ asset("assets/images/theme/images/room/image%20(22).png") }}" alt="">
                                     <div class="map-link">
                                         <a href="">Xem trên bản đồ</a>
                                     </div>
@@ -80,11 +84,7 @@
                                     <div class="ovv-card-bd card-body mb-0">
                                         <h5 class="card-title"></h5>
                                         <p class="card-text">
-                                            Resort Hồ Tràm tọa lạc tại một trong những bãi biển đẹp nhất Việt Nam,
-                                            mang đến trải nghiệm nghỉ dưỡng sang trọng với view biển tuyệt đẹp. Với
-                                            thiết kế hiện đại kết hợp nét đẹp truyền thống, resort là điểm đến lý
-                                            tưởng cho những ai muốn tận hưởng không gian nghỉ ngơi yên bình bên bờ
-                                            biển xinh đẹp.
+                                            Khám phá danh sách các khu nghỉ dưỡng cao cấp tại Việt Nam và quốc tế, nơi mang đến cho bạn trải nghiệm nghỉ dưỡng tuyệt vời, tiện nghi sang trọng, không gian yên bình và dịch vụ đẳng cấp. Tìm kiếm, so sánh và đặt phòng resort một cách dễ dàng chỉ trong vài bước.
                                         </p>
 
                                         <div class="ovv-contact">
@@ -109,80 +109,40 @@
                 <div class="di-content">
                     <div class="intro-content">
                         <div class="intro-slide">
-                            <img src="{{ asset("assets/images/room/image%20(9).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(9).png") }}" alt="">
                         </div>
 
                         <div class="intro-para">
                             <p>
-                                Resort Hồ Tràm là một trong những resort cao cấp nhất tại Vũng Tàu, tọa lạc trên bãi
-                                biển Hồ Tràm xinh đẹp. Với thiết kế sang trọng, hiện đại kết hợp với phong cách kiến
-                                trúc nhiệt đới, resort mang đến không gian nghỉ dưỡng đẳng cấp cho du khách. Mỗi
-                                phòng đều được trang bị đầy đủ tiện nghi cao cấp và view biển tuyệt đẹp.
+                                Khám phá danh sách các khu nghỉ dưỡng cao cấp tại Việt Nam và quốc tế, nơi mang đến cho bạn trải nghiệm nghỉ dưỡng tuyệt vời, tiện nghi sang trọng, không gian yên bình và dịch vụ đẳng cấp. Tìm kiếm, so sánh và đặt phòng resort một cách dễ dàng chỉ trong vài bước.
                             </p>
-                            <h5>Gồm 5 loại phòng</h5>
+                            <h5>Gồm</h5>
                             <ul>
-                                <li><a href="#" class="name-room">Phòng Deluxe Ocean View</a></li>
-                                <li><a href="#" class="name-room">Phòng Suite</a></li>
-                                <li><a href="#" class="name-room">Phòng Family</a></li>
-                                <li><a href="#" class="name-room">Villa Beach Front</a></li>
-                                <li><a href="#" class="name-room">Villa Garden View</a></li>
+                                @foreach($resort->rooms() as $room)
+                                    <li><a href="#" class="name-room">{{$room->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
 
                     <div class="produce-detail">
-                        <div class="room-card">
-                            <div class="room-img">
-                                <img src="{{ asset("assets/images/room/image%20(10).png") }}" alt="">
+                        @foreach($resort->rooms() as $room)
+                            <div class="room-card">
+                                <div class="room-img">
+                                    <img src="{{ json_decode($room->images, true)[0] }}" alt="">
+                                </div>
+                                <div class="room-des text-center card-text">
+                                    <h5 class="card-title">Deluxe Ocean View</h5>
+                                    <p>{{$room->description}}</p>
+                                </div>
+                                <div class="room-select text-center">
+                                    <a href="" class="select-btn btn btn-primary">
+                                        Xem ngay
+                                    </a>
+                                </div>
                             </div>
-                            <div class="room-des text-center card-text">
-                                <h5 class="card-title">Deluxe Ocean View</h5>
-                                <p>Phòng Deluxe Ocean View mang đến tầm nhìn tuyệt đẹp ra biển, được thiết kế với
-                                    phong cách hiện đại và sang trọng. Phòng rộng rãi với diện tích 45m², trang bị
-                                    đầy đủ tiện nghi cao cấp như bồn tắm đứng, minibar, TV màn hình phẳng và ban
-                                    công riêng để ngắm biển.</p>
-                            </div>
-                            <div class="room-select text-center">
-                                <a href="" class="select-btn btn btn-primary">
-                                    Xem ngay
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="room-card">
-                            <div class="room-img">
-                                <img src="{{ asset("assets/images/room/image%20(11).png") }}" alt="">
-                            </div>
-                            <div class="room-des text-center card-text">
-                                <h5 class="card-title">Suite</h5>
-                                <p>Phòng Suite rộng rãi với diện tích 65m², bao gồm phòng khách riêng biệt và phòng
-                                    ngủ sang trọng. Được trang bị bồn tắm Jacuzzi, phòng tắm đôi, và view biển tuyệt
-                                    đẹp. Phù hợp cho các cặp đôi muốn tận hưởng không gian riêng tư và sang trọng.
-                                </p>
-                            </div>
-                            <div class="room-select text-center">
-                                <a href="" class="select-btn btn btn-primary">
-                                    Xem ngay
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="room-card">
-                            <div class="room-img">
-                                <img src="{{ asset("assets/images/room/image%20(12).png") }}" alt="">
-                            </div>
-                            <div class="room-des text-center card-text">
-                                <h5 class="card-title">Family</h5>
-                                <p>Phòng Family rộng rãi với diện tích 80m², thiết kế đặc biệt cho gia đình với 2
-                                    phòng ngủ riêng biệt. Trang bị đầy đủ tiện nghi như bếp mini, phòng khách rộng
-                                    rãi và view biển tuyệt đẹp. Lý tưởng cho kỳ nghỉ gia đình.</p>
-                            </div>
-                            <div class="room-select text-center">
-                                <a href="" class="select-btn btn btn-primary">
-                                    Xem ngay
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -194,7 +154,7 @@
                 <div class="detail-board">
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(13).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(13).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Tiện nghi phòng
                             </div>
@@ -212,7 +172,7 @@
 
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(14).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(14).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Tiện nghi chung
                             </div>
@@ -228,7 +188,7 @@
 
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(15).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(15).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Tiện nghi công cộng
                             </div>
@@ -244,7 +204,7 @@
 
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(16).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(16).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Dịch vụ resort
                             </div>
@@ -260,7 +220,7 @@
 
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(17).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(17).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Vận chuyển
                             </div>
@@ -275,7 +235,7 @@
 
                     <div class="utilities-list">
                         <div class="utilities-header">
-                            <img src="{{ asset("assets/images/room/image%20(18).png") }}" alt="">
+                            <img src="{{ asset("assets/images/theme/images/room/image%20(18).png") }}" alt="">
                             <div class="utilities-list-title">
                                 Kết nối mạng
                             </div>
@@ -300,13 +260,13 @@
                     <div class="room-detail">
                         <div class="main-img row g-2 main-img main-img1">
                             <div class="biggest-img col-sm-4 col-md-6">
-                                <img src="{{ asset("assets/images/room/image%20(19).png") }}" alt=""
+                                <img src="{{ asset("assets/images/theme/images/room/image%20(19).png") }}" alt=""
                                      style="width: 100%;">
                             </div>
                             <div class="col-6 col-md-3">
-                                <img src="{{ asset("assets/images/room/image%20(20).png") }}" alt=""
+                                <img src="{{ asset("assets/images/theme/images/room/image%20(20).png") }}" alt=""
                                      style="width: 100%;" class="mb-2">
-                                <img src="{{ asset("assets/images/room/image%20(20).png") }}" alt=""
+                                <img src="{{ asset("assets/images/theme/images/room/image%20(20).png") }}" alt=""
                                      style="width: 100%;">
                             </div>
                             <div class="room-info col-6 col-md-3">
@@ -347,7 +307,7 @@
                                         </td>
                                         <td>
                                                     <span class="d-flex align-items-center mb-1">
-                                                        <img src="{{ asset("assets/icon-images/tick-success.png"
+                                                        <img src="{{ asset("assets/images/theme/icon-images/tick-success.png"
                                                            ) }}" alt="tick-success" style="max-width: 24px;"
                                                              class="me-2">
                                                         <span class="utilities">Giường King, view biển, ban công
@@ -376,7 +336,7 @@
                                         </td>
                                         <td>
                                                     <span class="d-flex align-items-center mb-1">
-                                                        <img src="{{ asset("assets/icon-images/tick-success.png"
+                                                        <img src="{{ asset("assets/images/theme/icon-images/tick-success.png"
                                                            ) }}" alt="tick-success" style="max-width: 24px;"
                                                              class="me-2">
                                                         <span class="utilities">Phòng khách riêng, Jacuzzi, view
@@ -410,7 +370,7 @@
                                         </td>
                                         <td>
                                                     <span class="d-flex align-items-center mb-1">
-                                                        <img src="{{ asset("assets/icon-images/tick-success.png"
+                                                        <img src="{{ asset("assets/images/theme/icon-images/tick-success.png"
                                                            ) }}" alt="tick-success" style="max-width: 24px;"
                                                              class="me-2">
 
@@ -444,7 +404,7 @@
                                         </td>
                                         <td>
                                                     <span class="d-flex align-items-center mb-1">
-                                                        <img src="{{ asset("assets/icon-images/tick-success.png"
+                                                        <img src="{{ asset("assets/images/theme/icon-images/tick-success.png"
                                                            ) }}" alt="tick-success" style="max-width: 24px;"
                                                              class="me-2">
 

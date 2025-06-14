@@ -30,7 +30,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"><a class="nav-link" href=" {{ route('homepage') }}">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('room.index') }}">Phòng</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('resort.index') }}">Phòng</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Đặt phòng</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Tin tức</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Hỗ trợ</a></li>

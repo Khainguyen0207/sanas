@@ -15,5 +15,5 @@ Route::group([
         Route::resource('register', 'RegisterController');
     });
 
-    Route::resource('room', 'RoomController');
+    Route::resource('resort', 'ResortController');
 });

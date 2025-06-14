@@ -196,43 +196,56 @@
                 </div>
 
                 <div class="row mt-4 g-3" id="rooms">
-                    <div class="col-lg-4 g-3">
-                        <div class="card rounded-4">
-                            <div class="p-3"><img src="{{ asset('assets/images/theme/images/room/image.png') }}"
-                                                  class="w-100 rounded-3 detail-img" alt="InterContinental Danang">
-                            </div>
-
-                            <div class="card-body p-3 pt-0">
-                                <h6 class="card-title fw-bold">Resort Hồ Tràm - Vũng Tàu</h6>
-                                <div class="p-3 pt-0 pb-0">
-                                    <p class="mb-1 text-info fw-bold text-decoration-underline"><i
-                                            class="fa-solid fa-location-dot"></i>
-                                        Đường Bình Châu, Xã Bình Châu, Huyện Xuyên Mộc, Tỉnh Bà Rịa - Vũng Tàu</p>
-                                    <ul class="list-unstyled text-success list-option-benefit">
-                                        <li class="button-has-icon">
-                                                    <span>
-                                                        <img src="{{ asset('assets/images/theme/icon-images/tick-success.png') }}"
-                                                             alt="tick-success">
-                                                    </span>
-                                            <span class="fw-bold">Miễn phí hủy</span>
-                                        </li>
-                                        <li class="button-has-icon">
-                                                    <span>
-                                                        <img src="{{ asset('assets/images/theme/icon-images/tick-success.png') }}"
-                                                             alt="tick-success">
-                                                    </span>
-                                            <span class="fw-bold">Không cọc trước</span>
-                                        </li>
-                                    </ul>
-                                    <p class="fw-bold" style="color: #f47c0e;">Từ: 1,500,000 VNĐ</p>
+                    @foreach($resorts as $resort)
+                        <div class="col-lg-4 g-3">
+                            <div class="card rounded-4">
+                                <div class="p-3">
+                                    @php
+                                        $resortImages = json_decode($resort->images, true);
+                                    @endphp
+                                    <img
+                                        src="{{ $resortImages[0] ?? asset('assets/images/theme/images/room/image.png')}}"
+                                        class="w-100 rounded-3 detail-img" alt="{{ $resort->name }}">
                                 </div>
-                                <div class="text-end">
-                                    <a href="{{ route('room.show') }}" class="see-more btn btn-primary rounded-4">Xem
-                                        chi tiết</a>
+
+                                <div class="card-body p-3 pt-0">
+                                    <h6 class="card-title fw-bold">{{ $resort->name }}</h6>
+                                    <div class="p-3 pt-0 pb-0">
+                                        <p class="mb-1 text-info fw-bold text-decoration-underline">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            {{ $resort->address }} {{-- Giả sử resort có cột 'address' --}}
+                                        </p>
+                                        <ul class="list-unstyled text-success list-option-benefit">
+                                            {{-- Bạn có thể lặp qua các tiện ích nếu có --}}
+                                            <li class="button-has-icon">
+                                <span>
+                                    <img src="{{ asset('assets/images/theme/icon-images/tick-success.png') }}"
+                                         alt="tick-success">
+                                </span>
+                                                <span class="fw-bold">Miễn phí hủy</span>
+                                            </li>
+                                            <li class="button-has-icon">
+                                <span>
+                                    <img src="{{ asset('assets/images/theme/icon-images/tick-success.png') }}"
+                                         alt="tick-success">
+                                </span>
+                                                <span class="fw-bold">Không cọc trước</span>
+                                            </li>
+                                        </ul>
+                                        {{-- Giả sử resort có cột 'min_price' hoặc 'starting_price' --}}
+                                        <p class="fw-bold" style="color: #f47c0e;">
+                                            Từ: {{ number_format($resort->min_price ?? 1500000, 0, ',', '.') }} VNĐ
+                                        </p>
+                                    </div>
+                                    <div class="text-end">
+                                        {{-- Liên kết đến trang chi tiết của resort cụ thể --}}
+                                        <a href="{{ route('resort.show', $resort) }}"
+                                           class="see-more btn btn-primary rounded-4">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
                     <div class="mt-5 mb-5">
                         <nav aria-label="Page navigation">

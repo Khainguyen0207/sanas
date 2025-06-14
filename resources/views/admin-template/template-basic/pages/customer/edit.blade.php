@@ -3,11 +3,9 @@
 @section('content')
     <div class="content-wrapper">
         <div class="row">
-            <div class="card">
-                <h3 class="card-title">Customer Information</h3>
-            </div>
+            <h3 class="card-title">Customer Information</h3>
 
-            <div class="form-has-data" id="customer-generate">
+            <div class="form-has-data" id="customer-generate" data-url="{{ route('admin.customers.update', ['customer' => $customer])}}">
                 @include(admin_template_basic_theme('pages.customer.base-form'))
             </div>
         </div>
@@ -19,6 +17,7 @@
         // Handle file upload preview
         document.getElementById('avatar').addEventListener('change', function (e) {
             const file = e.target.files[0];
+
             if (file) {
                 // Check file type
                 if (!file.type.match('image.*')) {
@@ -34,18 +33,26 @@
                 reader.readAsDataURL(file);
             }
         });
+        document.addEventListener('DOMContentLoaded', function () {
+            const $dataForm = $('.form-has-data');
+            const $form = $('form[data-bs-target="form-customer"]');
+
+            const $id = $dataForm.attr('id') + '-form';
+            const $dataUrl = $dataForm.attr('data-url');
+
+            $form.attr('action', $dataUrl);
+            $form.attr('id', $id);
+            $form.find('input[type="hidden"][name="_method"]').val('PUT')
+        })
     </script>
 
     @if($customer)
-        <script src="{{ asset('assets/admin/js/form.js') }}"></script>
-
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const $myVar = @json($customer); // Nhúng biến PHP vào JS
+                const $myVar = @json($customer);
 
-                const $id = $('.form-has-data').attr('id') + '-form'; // Thêm class selector
-
-                $('form.form-sample').attr('id', $id);
+                const $dataForm = $('.form-has-data');
+                const $id = $dataForm.attr('id') + '-form';
 
                 generateForm($myVar, $id)
             })

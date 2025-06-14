@@ -20,4 +20,8 @@ $(document).ready(function () {
 
         window.location.href = $(this).data('url');
     })
+
+    $('a[data-bs-action="modal-confirm-action"][data-bs-target="#modal-confirm-delete"]').on('click', function () {
+        $('#modal-confirm-action').attr('action', $(this).attr('href'))
+    })
 })

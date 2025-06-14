@@ -1,10 +1,13 @@
-(function($) {
-  'use strict';
+(function ($) {
+    'use strict';
 
-  if ($(".js-example-basic-single").length) {
-    $(".js-example-basic-single").select2();
-  }
-  if ($(".js-example-basic-multiple").length) {
-    $(".js-example-basic-multiple").select2();
-  }
+    $(document).ready(function () {
+        const resort = $("#resort_id");
+        console.log('OK')
+
+        if (resort.length) {
+            resort.select2();
+            console.log('OK')
+        }
+    })
 })(jQuery);

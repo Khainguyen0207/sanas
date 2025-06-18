@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CustomerFactory> */
     use HasFactory;
 
     protected $table = 'customers';
@@ -17,22 +16,21 @@ class Customer extends Model
         'id',
         'name',
         'password',
+        'phone',
         'email',
         'cash',
         'status',
+        'avatar',
         'birthday',
-        'phone',
         'email_verified_at',
         'remember_token',
-        'is_verified',
         'last_login_at',
         'gender',
         'address',
-        'is_partner',
     ];
 
     protected $casts = [
-        'birthday' => 'date:Y-m-d',
+        'birthday' => 'datetime',
         'cash' => 'integer',
         'status' => CustomerStatusEnum::class,
         'password' => 'hashed',

@@ -12,7 +12,7 @@ Install with https: ```git clone https://github.com/Khainguyen0207/sanas sanas``
 
 Once setup, open the source code and write in terminal
 
-composer i
+composer i <br>
 npm i
 php artisan migrate
 
